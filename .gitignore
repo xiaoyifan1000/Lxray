@@ -1,0 +1,32 @@
+# Dependencies and IDE
+/node_modules
+/oh_modules
+/local.properties
+/.idea
+/.hvigor
+.cxx
+/.clangd
+/.clang-format
+/.clang-tidy
+**/.test
+/.appanalyzer
+
+# Build outputs
+**/build
+entry/libs/**/*.so
+entry/libs/**/*.h
+*.hap
+*.o
+*.a
+
+# Signing and secrets
+*.p12
+*.p7b
+*.cer
+*.csr
+*.bak
+
+# Screenshots and temp
+*.jpeg
+*.jpg
+*.log
