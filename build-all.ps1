@@ -1,9 +1,8 @@
 <#
-build-all.ps1 - VPNApp 一键构建脚本
-
-流程: Go 核心双 ABI 编译 -> hvigor 打包 -> 输出产物信息
+build-all.ps1 - VPNApp 一键构建脚�?
+流程: Go 核心�?ABI 编译 -> hvigor 打包 -> 输出产物信息
 用法: powershell -ExecutionPolicy Bypass -File build-all.ps1 [-Abi all|arm64|x86_64] [-BuildMode debug|release] [-DevEcoHome <path>]
-前置: 已安装 Go, 已配置签名(build-profile.json5); DevEco 安装路径自动探测
+前置: 已安�?Go, 已配置签�?build-profile.json5); DevEco 安装路径自动探测
 #>
 param(
     [ValidateSet("all", "arm64", "x86_64")]
@@ -22,7 +21,7 @@ $GoDir = Join-Path $Root "entry\src\main\golang"
 function Find-DevEco {
     if ($DevEcoHome -ne "" -and (Test-Path $DevEcoHome)) { return $DevEcoHome }
     $candidates = @(
-        "F:\lxray\DevEco Studio",
+        "C:\Program Files\Huawei\DevEco Studio",
         (Join-Path $env:ProgramFiles "Huawei\DevEco Studio"),
         (Join-Path ${env:ProgramFiles(x86)} "Huawei\DevEco Studio"),
         "D:\Program Files\Huawei\DevEco Studio",
@@ -38,7 +37,7 @@ function Find-DevEco {
 
 $DevEco = Find-DevEco
 if (-not $DevEco) {
-    throw "未找到 DevEco Studio，请用 -DevEcoHome 参数指定安装路径"
+    throw "未找�?DevEco Studio，请�?-DevEcoHome 参数指定安装路径"
 }
 $Jbr = Join-Path $DevEco "jbr\bin"
 $Hvigor = Join-Path $DevEco "tools\hvigor\bin\hvigorw.js"
@@ -46,7 +45,7 @@ $SdkHome = Join-Path $DevEco "sdk"
 Write-Host "DevEco Studio: $DevEco"
 
 if (-not (Test-Path $Hvigor)) {
-    throw "hvigorw.js not found: $Hvigor (检查 DevEco 安装路径)"
+    throw "hvigorw.js not found: $Hvigor (检�?DevEco 安装路径)"
 }
 
 Write-Host "== 1/2 Go 核心编译 ($Abi) =="

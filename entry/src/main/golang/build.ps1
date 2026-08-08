@@ -1,10 +1,9 @@
 <#
-build.ps1 - Go 核心库(libcore.so)交叉编译脚本
+build.ps1 - Go 核心�?libcore.so)交叉编译脚本
 
-工具链: GOOS=android + OHOS NDK clang (--target=*-linux-ohos, musl)
-  - netgo: 规避 musl 下 net/cgo 类型冲突, 使用纯 Go DNS 解析器
-  - android_stub/: GOOS=android 对 android/log.h 与 -llog 的依赖桩(映射到 hilog)
-  - ldflags "-w": 保留符号表以便 addr2line 定位崩溃; release 可加回 "-s"
+工具�? GOOS=android + OHOS NDK clang (--target=*-linux-ohos, musl)
+  - netgo: 规避 musl �?net/cgo 类型冲突, 使用�?Go DNS 解析�?  - android_stub/: GOOS=android �?android/log.h �?-llog 的依赖桩(映射�?hilog)
+  - ldflags "-w": 保留符号表以�?addr2line 定位崩溃; release 可加�?"-s"
 用法: build.ps1 [-Abi arm64|x86_64|all] [-NdkHome <path>]
 #>
 param(
@@ -37,7 +36,7 @@ function Find-NdkHome {
         if (Test-Path (Join-Path $cand "llvm\bin\clang.exe")) { return $cand }
     }
     $common = @(
-        "F:\lxray\DevEco Studio\sdk\default\openharmony\native",
+        "C:\Program Files\Huawei\DevEco Studio\sdk\default\openharmony\native",
         (Join-Path $env:ProgramFiles "Huawei\DevEco Studio\sdk\default\openharmony\native"),
         "D:\Program Files\Huawei\DevEco Studio\sdk\default\openharmony\native",
         "C:\Program Files\Huawei\DevEco Studio\sdk\default\openharmony\native"
@@ -50,7 +49,7 @@ function Find-NdkHome {
 
 $NdkHome = Find-NdkHome
 if (-not $NdkHome) {
-    throw "未找到 OHOS NDK，请设置 OHOS_NDK_HOME 或 DevEco SDK 路径(可用 -DevEcoHome 或 -NdkHome 参数)"
+    throw "未找�?OHOS NDK，请设置 OHOS_NDK_HOME �?DevEco SDK 路径(可用 -DevEcoHome �?-NdkHome 参数)"
 }
 
 if (-not (Test-Path (Join-Path $NdkHome "llvm\bin\clang.exe"))) {
