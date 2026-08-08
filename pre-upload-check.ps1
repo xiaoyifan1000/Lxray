@@ -31,9 +31,10 @@ if ($content -match '"signingConfigs"\s*:') {
 }
 
 # 2. personal info scan
-$sensitive = @("<REDACTED>", "<REDACTED>", "lxray", "F:\lxray", "~USER~", "~PROJECT~",
-    "<REDACTED-IP>", "<REDACTED>", "<REDACTED-IP>", "<REDACTED-DOMAIN>", "<REDACTED>", "<REDACTED>",
-    "<REDACTED-EMAIL>", "<REDACTED-TOKEN>", "<REDACTED>", "keyPassword", "storePassword")
+# Replace the placeholders below with your own values before use,
+# or add new patterns to extend coverage.
+$sensitive = @("USERNAME_HERE", "YOUR_PROJECT_PATH", "YOUR_SERVER_IP", "YOUR_UUID",
+    "YOUR_SUBSCRIPTION_TOKEN", "keyPassword", "storePassword", "signingConfigs")
 $files = Get-ChildItem $Root -Recurse -File | Where-Object {
     $_.FullName -notmatch "build|\.hvigor|oh_modules|\.cxx|\.idea|\\shots\\|\.jpeg|\.png|\.so$|\.dat$|\.o$|\.a$|\.zip$|\.git|\.bak$|pre-upload-check\.ps1$"
 }
