@@ -3,6 +3,11 @@
 > 基于 HarmonyOS 的 VPN 客户端应用，核心为 Xray-core（Go 编译为 C 动态库，经 NAPI 桥接），
 > 支持 VLESS/VMESS 协议、订阅管理、自定义路由规则、流量统计等。
 
+## 环境配置（重要）
+
+本仓库仅包含源码。**构建环境配置请让 AI 助手读取 [BUILD_RECOVERY.md](BUILD_RECOVERY.md) 完成**，
+该文档包含完整的构建流程、鸿蒙专用补丁说明和常见问题处理（可直接粘贴给 AI）。
+
 ---
 
 ## 界面预览
